@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { MyApp } from './components/MyApp/MyApp'
+import { App } from './App'
 
 ReactDOM.render(
     <React.StrictMode>
-        <h1>Hello</h1>
-        <MyApp />
+        <App />
     </React.StrictMode>,
     document.querySelector('#root')
 )
