@@ -1,25 +1,46 @@
 import React, { useState } from 'react'
 import { TextField } from 'formik-mui'
 import { Field } from 'formik'
+import phoneNumberMask from '../../services/phoneNumberMask/phoneNumberMask'
 
-const temp = '+38 (0xx) xx xxx xx'
+console.log(
+    phoneNumberMask({
+        mask: '+x xxx xxx xx xx',
+        phone: '78905556781',
+        visible: false,
+    })
+)
+
 export const PhoneNumberInput = ({ text, name }) => {
-    const [phNumber, setPhNumber] = useState('+38')
+    const [click, setClick] = useState(true)
+    const [entered, setEntered] = useState('')
 
     const handleChange = event => {
-        setPhNumber(event.target.value)
-        console.log(event.target.value)
+        // setEntered(event.target.value)
+        setEntered(
+            phoneNumberMask({
+                mask: '+x xxx xxx xx xx',
+                phone: event.target.value,
+                visible: false,
+            })
+        )
+    }
+
+    const handleClick = () => {
+        click && setEntered('+7')
+        setClick(false)
     }
 
     return (
         <Field
             component={TextField}
             label={text}
-            value={phNumber}
+            value={entered}
             name={name}
             variant="outlined"
             fullWidth
             onChange={handleChange}
+            onClick={handleClick}
         />
     )
 }
