@@ -1,61 +1,66 @@
 import React, { useState, useRef } from 'react'
 import { Field, useField, useFormik, useFormikContext } from 'formik'
-import TextField from '@mui/material/TextField'
-// import { TextField } from 'formik-mui'
-
+// import TextField from '@mui/material/TextField'
 import 'react-phone-number-input/style.css'
 import Input from 'react-phone-number-input/input'
 import { isValidPhoneNumber } from 'react-phone-number-input'
-import { values } from 'ramda'
+import { TextField } from 'formik-mui'
 
-const MyTextField = React.forwardRef(function custom(props, ref) {
-    return <TextField {...props} fullWidth inputRef={ref} label="Phone number" />
+// const MyTextField = React.forwardRef(function custom(props, ref) {
+//     console.log('zz = ' + JSON.stringify(props, undefined, 2))
+//     const { name, label } = props
+//     return <TextField {...props} fullWidth inputRef={ref} name={name} label={label} />
+// })
+
+const MyField = React.forwardRef(function custom(props, ref) {
+    // console.log(props)
+    console.log(props.context)
+    const { name, label } = props
+    return (
+        <Field
+            {...props}
+            component={TextField}
+            label={label}
+            name={name}
+            variant="outlined"
+            inputRef={ref}
+            fullWidth
+        />
+    )
 })
-//
-// const CustomInput = ({ ...props }) => {
-//     const [value, setValue] = useState()
-//     const [focus, setFocus] = useState(false)
-//
-//     console.log('CustomInput props = ', props)
-//
-//     return (
-//         <>
-//             <Input
-//                 country="US"
-//                 international={focus}
-//                 value={value}
-//                 withCountryCallingCode
-//                 onChange={setValue}
-//                 inputComponent={MyTextField}
-//                 onFocus={() => setFocus(true)}
-//                 control={props.control}
-//                 {...props}
-//             />
-//         </>
-//     )
-// }
 
 export const PhoneNumberInput = ({ text, ...props }) => {
     const [value, setValue] = useState()
     const [focus, setFocus] = useState(false)
-    const [field, meta] = useField(props)
-    // console.log('f = ', field)
-    // console.log('p = ', props)
-    console.log('CustomInput props = ', props)
-    // const formik = useFormik()
-    // console.log(useFormikContext())
+    const [field, meta, context] = useField(props)
+
+    // console.log(value && isPossiblePhoneNumber(value) ? 'true' : 'false')
+    // console.log(
+    //     value
+    //         ? isValidPhoneNumber(value)
+    //             ? undefined
+    //             : 'Invalid phone number'
+    //         : 'Phone number required'
+    // )
+
+    // console.log(props)
+
+    console.log(value)
 
     return (
         <>
             <Input
-                country="US"
+                country="UA"
                 international={focus}
                 value={value}
                 withCountryCallingCode
-                onChange={props.context.handleChange}
-                inputComponent={MyTextField}
+                onChange={setValue}
+                inputComponent={MyField}
                 onFocus={() => setFocus(true)}
                 control={props.control}
+                // error={
+                //
+                // }
                 {...props}
             />
         </>

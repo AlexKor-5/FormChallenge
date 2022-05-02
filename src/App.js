@@ -46,9 +46,11 @@ export const App = () => {
                     lastName: Yup.string()
                         .max(20, 'Have to be 20 or less characters')
                         .required('Required'),
-                    email: Yup.string().email('Invalid email.').required('Required.'),
+                    email: Yup.string().required('Required.'),
+                    phoneNumber: Yup.string().required('Required'),
                 })}
-                validate={validate}
+                //.email('Invalid email.')
+                // validate={validate}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2))
@@ -63,8 +65,8 @@ export const App = () => {
                             <TextInput text={'Email'} name={'email'} />
                             {/*<TextInput text={'Phone Number'} name={'phoneNumber'} />*/}
                             <PhoneNumberInput
-                                text={'Phone Number'}
                                 name={'phoneNumber'}
+                                label={'Phone Number'}
                                 context={context}
                             />
                             <MyButton>Next</MyButton>
