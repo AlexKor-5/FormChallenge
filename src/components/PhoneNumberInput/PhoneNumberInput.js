@@ -1,66 +1,76 @@
 import React, { useState, useRef } from 'react'
-// import { TextField } from 'formik-mui'
-import { Field } from 'formik'
-import phoneNumberMask from '../../services/phoneNumberMask/phoneNumberMask'
-// import { MaskField } from 'react-mask-field'
+import { Field, useField, useFormik, useFormikContext } from 'formik'
 import TextField from '@mui/material/TextField'
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
-import ua from 'react-phone-number-input/locale/ua.json'
-import Input from 'react-phone-number-input/input'
-
 // import { TextField } from 'formik-mui'
+
+import 'react-phone-number-input/style.css'
+import Input from 'react-phone-number-input/input'
+import { isValidPhoneNumber } from 'react-phone-number-input'
+import { values } from 'ramda'
 
 const MyTextField = React.forwardRef(function custom(props, ref) {
-    console.log(props)
     return <TextField {...props} fullWidth inputRef={ref} label="Phone number" />
 })
-
-// const MyTextField = props => {
-//     console.log(props)
-//     return <TextField {...props} fullWidth />
+//
+// const CustomInput = ({ ...props }) => {
+//     const [value, setValue] = useState()
+//     const [focus, setFocus] = useState(false)
+//
+//     console.log('CustomInput props = ', props)
+//
+//     return (
+//         <>
+//             <Input
+//                 country="US"
+//                 international={focus}
+//                 value={value}
+//                 withCountryCallingCode
+//                 onChange={setValue}
+//                 inputComponent={MyTextField}
+//                 onFocus={() => setFocus(true)}
+//                 control={props.control}
+//                 {...props}
+//             />
+//         </>
+//     )
 // }
 
-export const PhoneNumberInput = ({ text, name }) => {
-    const [click, setClick] = useState(true)
-    const [entered, setEntered] = useState({ string: '' })
-    const inputText = useRef(null)
-
+export const PhoneNumberInput = ({ text, ...props }) => {
     const [value, setValue] = useState()
-
-    // const handleChange = event => {
-    //     // setEntered(event.target.value)
-    //     setEntered({
-    //         string: phoneNumberMask({
-    //             mask: '+x xxx xxx xx xx',
-    //             phone: event.target.value,
-    //             visible: false,
-    //         }),
-    //     })
-    // }
+    const [focus, setFocus] = useState(false)
+    const [field, meta] = useField(props)
+    // console.log('f = ', field)
+    // console.log('p = ', props)
+    console.log('CustomInput props = ', props)
+    // const formik = useFormik()
+    // console.log(useFormikContext())
 
     return (
         <>
-            {/*<Field*/}
-            {/*    component={TextFieldWithMask}*/}
-            {/*    label={text}*/}
-            {/*    value={entered.string}*/}
-            {/*    name={name}*/}
-            {/*    variant="outlined"*/}
-            {/*    fullWidth*/}
-            {/*    onChange={handleChange}*/}
-            {/*    // onClick={handleClick}*/}
-            {/*/>*/}
-            {/*<TextFieldWithMask />*/}
-            {/*<PhoneInput placeholder="Enter phone number" value={value} onChange={setValue} />*/}
             <Input
-                country="UA"
-                international
+                country="US"
+                international={focus}
                 value={value}
                 withCountryCallingCode
-                onChange={setValue}
+                onChange={props.context.handleChange}
                 inputComponent={MyTextField}
+                onFocus={() => setFocus(true)}
+                control={props.control}
+                {...props}
             />
         </>
     )
 }
+
+/*<Field*/
+/*    component={CustomInput}*/
+/*    {...field}*/
+/*   {...props}*/
+/*    label={text}*/
+/*    name={props.name}*/
+/*    variant="outlined"*/
+/*/>*/
+/*<label htmlFor={props.id || props.name}>{props.label}</label>*/
+/*<input className="text-input" {...field} {...props} />*/
+/*<CustomInput {...props} {...field} control={field} />*/
+/*{meta.touched && meta.error ? <div className="error">{meta.error}</div> : null}*/

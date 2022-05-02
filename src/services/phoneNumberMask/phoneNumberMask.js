@@ -9,11 +9,6 @@ const phoneNumberMask = obj => {
         change(resMask, phoneNumber)
     }
     change(obj.mask, obj.phone)
-    return obj.visible
-        ? resMask
-        : resMask
-              .split('')
-              .filter(s => s !== 'x')
-              .join('')
+    return resMask.replace(/(\*x)|x/gi, '').replace(/(\*\*)/gi, '*')
 }
 export default phoneNumberMask

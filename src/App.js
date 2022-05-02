@@ -11,6 +11,7 @@ import { PhoneNumberInput } from './components/PhoneNumberInput/PhoneNumberInput
 
 // const validate = values => {
 //     const errors = {}
+//     console.log(values)
 //     if (!values.email) {
 //         errors.email = 'Required'
 //     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -18,6 +19,15 @@ import { PhoneNumberInput } from './components/PhoneNumberInput/PhoneNumberInput
 //     }
 //     return errors
 // }
+
+const validate = values => {
+    let errors = {}
+    console.log(values)
+    if (!values.phoneNumber) {
+        errors.phoneNumber = 'Required'
+    }
+    return errors
+}
 
 export const App = () => {
     return (
@@ -38,7 +48,7 @@ export const App = () => {
                         .required('Required'),
                     email: Yup.string().email('Invalid email.').required('Required.'),
                 })}
-                // validate={validate}
+                validate={validate}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2))
@@ -46,15 +56,21 @@ export const App = () => {
                     }, 400)
                 }}
             >
-                <Form>
-                    <MainContainer>
-                        <Title text={'Step 2'} iconRender={<AccountCircleRoundedIcon />} />
-                        <TextInput text={'Email'} name={'email'} />
-                        {/*<TextInput text={'Phone Number'} name={'phoneNumber'} />*/}
-                        <PhoneNumberInput text={'Phone Number'} name={'phoneNumber'} />
-                        <MyButton>Next</MyButton>
-                    </MainContainer>
-                </Form>
+                {context => (
+                    <Form>
+                        <MainContainer>
+                            <Title text={'Step 2'} iconRender={<AccountCircleRoundedIcon />} />
+                            <TextInput text={'Email'} name={'email'} />
+                            {/*<TextInput text={'Phone Number'} name={'phoneNumber'} />*/}
+                            <PhoneNumberInput
+                                text={'Phone Number'}
+                                name={'phoneNumber'}
+                                context={context}
+                            />
+                            <MyButton>Next</MyButton>
+                        </MainContainer>
+                    </Form>
+                )}
             </Formik>
         </>
     )
