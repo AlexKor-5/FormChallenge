@@ -49,8 +49,6 @@ export const App = () => {
                     email: Yup.string().required('Required.'),
                     phoneNumber: Yup.string().required('Required'),
                 })}
-                //.email('Invalid email.')
-                // validate={validate}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2))
@@ -63,7 +61,6 @@ export const App = () => {
                         <MainContainer>
                             <Title text={'Step 2'} iconRender={<AccountCircleRoundedIcon />} />
                             <TextInput text={'Email'} name={'email'} />
-                            {/*<TextInput text={'Phone Number'} name={'phoneNumber'} />*/}
                             <PhoneNumberInput
                                 name={'phoneNumber'}
                                 label={'Phone Number'}
