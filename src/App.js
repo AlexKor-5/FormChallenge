@@ -8,26 +8,8 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
 import { TextInput } from './components/TextInput/TextInput'
 import { MyButton } from './components/MyButton/MyButton'
 import { PhoneNumberInput } from './components/PhoneNumberInput/PhoneNumberInput'
-
-// const validate = values => {
-//     const errors = {}
-//     console.log(values)
-//     if (!values.email) {
-//         errors.email = 'Required'
-//     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-//         errors.email = 'Invalid email address'
-//     }
-//     return errors
-// }
-
-const validate = values => {
-    let errors = {}
-    console.log(values)
-    if (!values.phoneNumber) {
-        errors.phoneNumber = 'Required'
-    }
-    return errors
-}
+import 'yup-phone'
+import { Step2 } from './pages/Step2/Step2'
 
 export const App = () => {
     return (
@@ -47,7 +29,7 @@ export const App = () => {
                         .max(20, 'Have to be 20 or less characters')
                         .required('Required'),
                     email: Yup.string().required('Required.'),
-                    phoneNumber: Yup.string().required('Required'),
+                    phoneNumber: Yup.string().phone('UA', true, 'Phone number is invalid'),
                 })}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
@@ -59,14 +41,7 @@ export const App = () => {
                 {context => (
                     <Form>
                         <MainContainer>
-                            <Title text={'Step 2'} iconRender={<AccountCircleRoundedIcon />} />
-                            <TextInput text={'Email'} name={'email'} />
-                            <PhoneNumberInput
-                                name={'phoneNumber'}
-                                label={'Phone Number'}
-                                context={context}
-                            />
-                            <MyButton>Next</MyButton>
+                            <Step2 context={context} />
                         </MainContainer>
                     </Form>
                 )}

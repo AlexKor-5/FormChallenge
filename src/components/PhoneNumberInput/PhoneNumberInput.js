@@ -22,22 +22,24 @@ const MyField = React.forwardRef(function custom(props, ref) {
 })
 
 export const PhoneNumberInput = ({ text, ...props }) => {
-    const [value, setValue] = useState()
+    // const [value, setValue] = useState()
     const [focus, setFocus] = useState(false)
-
-    console.log(props.context)
+    const { setFieldValue } = props.context
+    const { name } = props
+    // console.log(props.context)
     return (
         <>
             <Input
                 {...props}
                 country="UA"
                 international={focus}
-                value={value}
+                // value={value}
                 withCountryCallingCode
-                onChange={setValue}
+                onChange={value => {
+                    setFieldValue(name, value)
+                }}
                 inputComponent={MyField}
                 onFocus={() => setFocus(true)}
-                control={props.control}
             />
         </>
     )
