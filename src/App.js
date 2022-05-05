@@ -1,17 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Step1 } from './pages/Step1/Step1'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { MainContainer } from './components/MainContainer/MainContainer'
-import { Title } from './components/Title/Title'
-import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
-import { TextInput } from './components/TextInput/TextInput'
-import { MyButton } from './components/MyButton/MyButton'
-import { PhoneNumberInput } from './components/PhoneNumberInput/PhoneNumberInput'
 import 'yup-phone'
 import { Step2 } from './pages/Step2/Step2'
+import { Step3 } from './pages/Step3/Step3'
 
 export const App = () => {
+    const [haveNumber, setHaveNumber] = useState(false)
     return (
         <>
             <Formik
@@ -29,7 +26,9 @@ export const App = () => {
                         .max(20, 'Have to be 20 or less characters')
                         .required('Required'),
                     email: Yup.string().required('Required.'),
-                    phoneNumber: Yup.string().phone('UA', true, 'Phone number is invalid'),
+                    phoneNumber: haveNumber
+                        ? Yup.string().phone('UA', false, 'Phone number is invalid')
+                        : Yup.string(),
                 })}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
@@ -41,7 +40,10 @@ export const App = () => {
                 {context => (
                     <Form>
                         <MainContainer>
-                            <Step2 context={context} />
+                            <Step1 />
+                            <Step2 context={context} setHaveNumber={setHaveNumber} />
+                            <Step3 />
+                            <input type="submit" />
                         </MainContainer>
                     </Form>
                 )}
