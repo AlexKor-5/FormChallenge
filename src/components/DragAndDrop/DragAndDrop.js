@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { makeStyles } from '@mui/styles'
 import Paper from '@mui/material/Paper'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import Typography from '@mui/material/Typography'
+// import { FieldArray } from 'formik'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -39,24 +40,24 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export const DragAndDrop = props => {
+export const DragAndDrop = ({ name, setFieldValue = f => f, currentFiles }) => {
     const styles = useStyles()
-    const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
 
-    const files = acceptedFiles.map((file, i) => (
-        <ListItem key={i}>
-            <ListItemAvatar>
-                <InsertDriveFileIcon className={styles.iconFile} />
-            </ListItemAvatar>
-            <ListItemText primary={file.path} secondary={file.size} />
-        </ListItem>
-    ))
+    const onDrop = useCallback(
+        acceptedFiles => {
+            acceptedFiles.forEach(file => {
+                setFieldValue(name, [...currentFiles, file])
+            })
+        },
+        [name, setFieldValue, currentFiles]
+    )
+    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop })
 
     return (
         <>
             <div className={styles.fullBlock}>
                 <Paper {...getRootProps({ className: 'dropzone' })} className={styles.root}>
-                    <input {...getInputProps()} />
+                    <input {...getInputProps()} name={name} />
                     <CloudUploadIcon className={styles.icon} />
                     <Typography
                         variant="subtitle1"
@@ -68,9 +69,17 @@ export const DragAndDrop = props => {
                     </Typography>
                 </Paper>
             </div>
+
             <aside className={styles.fullBlock}>
                 <List sx={{ width: '100%', maxWidth: '100%' }} className={styles.fullBlock}>
-                    {files}
+                    {acceptedFiles.map((file, i) => (
+                        <ListItem key={i}>
+                            <ListItemAvatar>
+                                <InsertDriveFileIcon className={styles.iconFile} />
+                            </ListItemAvatar>
+                            <ListItemText primary={file.path} secondary={file.size} />
+                        </ListItem>
+                    ))}
                 </List>
             </aside>
         </>

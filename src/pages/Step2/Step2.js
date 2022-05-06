@@ -9,7 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 
 export const Step2 = ({ context, setHaveNumber = f => f }) => {
     const [check, setCheck] = useState(false)
-    console.log(context)
+    // console.log(context)
     return (
         <>
             <Title text={'Step 2'} iconRender={<AccountCircleRoundedIcon />} />

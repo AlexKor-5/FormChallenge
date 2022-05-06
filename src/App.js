@@ -17,6 +17,7 @@ export const App = () => {
                     lastName: '',
                     email: '',
                     phoneNumber: '',
+                    files: [],
                 }}
                 validationSchema={Yup.object({
                     firstName: Yup.string()
@@ -40,10 +41,11 @@ export const App = () => {
                 {context => (
                     <Form>
                         <MainContainer>
-                            <Step1 />
-                            <Step2 context={context} setHaveNumber={setHaveNumber} />
-                            <Step3 />
-                            <input type="submit" />
+                            {/*<Step1 />*/}
+                            {/*<Step2 context={context} setHaveNumber={setHaveNumber} />*/}
+                            <Step3 context={context} />
+                            {/*<input type="submit" />*/}
+                            {/*<input type="file" multiple onInput={() => console.log('file added')} />*/}
                         </MainContainer>
                     </Form>
                 )}

@@ -4,11 +4,13 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
 import { MyButton } from '../../components/MyButton/MyButton'
 import { DragAndDrop } from '../../components/DragAndDrop/DragAndDrop'
 
-export const Step3 = () => {
+export const Step3 = ({ context }) => {
+    const { setFieldValue, values } = context
+    console.log(values)
     return (
         <>
             <Title text={'Step 3'} iconRender={<AccountCircleRoundedIcon />} />
-            <DragAndDrop />
+            <DragAndDrop name={'files'} setFieldValue={setFieldValue} currentFiles={values.files} />
             <MyButton>Next</MyButton>
         </>
     )
