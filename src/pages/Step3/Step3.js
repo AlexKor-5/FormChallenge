@@ -10,7 +10,7 @@ export const Step3 = ({ context }) => {
     return (
         <>
             <Title text={'Step 3'} iconRender={<AccountCircleRoundedIcon />} />
-            <DragAndDrop name={'files'} setFieldValue={setFieldValue} currentFiles={values.files} />
+            <DragAndDrop name={'files'} setFieldValue={setFieldValue} />
             <MyButton>Next</MyButton>
         </>
     )

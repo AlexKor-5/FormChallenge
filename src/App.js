@@ -41,8 +41,8 @@ export const App = () => {
                 {context => (
                     <Form>
                         <MainContainer>
-                            {/*<Step1 />*/}
-                            {/*<Step2 context={context} setHaveNumber={setHaveNumber} />*/}
+                            <Step1 />
+                            <Step2 context={context} setHaveNumber={setHaveNumber} />
                             <Step3 context={context} />
                             {/*<input type="submit" />*/}
                             {/*<input type="file" multiple onInput={() => console.log('file added')} />*/}

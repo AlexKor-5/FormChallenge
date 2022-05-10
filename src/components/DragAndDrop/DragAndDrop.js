@@ -40,16 +40,14 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export const DragAndDrop = ({ name, setFieldValue = f => f, currentFiles }) => {
+export const DragAndDrop = ({ name, setFieldValue = f => f }) => {
     const styles = useStyles()
 
     const onDrop = useCallback(
         acceptedFiles => {
-            acceptedFiles.forEach(file => {
-                setFieldValue(name, [...currentFiles, file])
-            })
+            setFieldValue(name, acceptedFiles)
         },
-        [name, setFieldValue, currentFiles]
+        [name, setFieldValue]
     )
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop })
 
