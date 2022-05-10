@@ -6,12 +6,12 @@ import { DragAndDrop } from '../../components/DragAndDrop/DragAndDrop'
 
 export const Step3 = ({ context }) => {
     const { setFieldValue, values } = context
-    console.log(values)
+    // console.log(values)
     return (
         <>
             <Title text={'Step 3'} iconRender={<AccountCircleRoundedIcon />} />
             <DragAndDrop name={'files'} setFieldValue={setFieldValue} />
-            <MyButton>Next</MyButton>
+            <MyButton linkTo={'/overview'}>Next</MyButton>
         </>
     )
 }

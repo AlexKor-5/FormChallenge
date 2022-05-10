@@ -10,7 +10,7 @@ export const Step1 = () => {
             <Title text={'Step 1'} iconRender={<AccountCircleRoundedIcon />} />
             <TextInput text={'First Name'} name={'firstName'} />
             <TextInput text={'Last Name'} name={'lastName'} />
-            <MyButton>Next</MyButton>
+            <MyButton linkTo={'/step2'}>Next</MyButton>
         </>
     )
 }

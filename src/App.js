@@ -6,6 +6,8 @@ import { MainContainer } from './components/MainContainer/MainContainer'
 import 'yup-phone'
 import { Step2 } from './pages/Step2/Step2'
 import { Step3 } from './pages/Step3/Step3'
+import { Overview } from './pages/Overview/Overview'
+import { Routes, Route } from 'react-router-dom'
 
 export const App = () => {
     const [haveNumber, setHaveNumber] = useState(false)
@@ -41,11 +43,17 @@ export const App = () => {
                 {context => (
                     <Form>
                         <MainContainer>
-                            <Step1 />
-                            <Step2 context={context} setHaveNumber={setHaveNumber} />
-                            <Step3 context={context} />
-                            {/*<input type="submit" />*/}
-                            {/*<input type="file" multiple onInput={() => console.log('file added')} />*/}
+                            <Routes>
+                                <Route path="/" element={<Step1 />} />
+                                <Route
+                                    path="step2"
+                                    element={
+                                        <Step2 context={context} setHaveNumber={setHaveNumber} />
+                                    }
+                                />
+                                <Route path="step3" element={<Step3 context={context} />} />
+                                <Route path="overview" element={<Overview context={context} />} />
+                            </Routes>
                         </MainContainer>
                     </Form>
                 )}

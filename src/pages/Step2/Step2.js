@@ -31,7 +31,7 @@ export const Step2 = ({ context, setHaveNumber = f => f }) => {
             {check ? (
                 <PhoneNumberInput name={'phoneNumber'} label={'Phone Number'} context={context} />
             ) : null}
-            <MyButton>Next</MyButton>
+            <MyButton linkTo={'/step3'}>Next</MyButton>
         </>
     )
 }

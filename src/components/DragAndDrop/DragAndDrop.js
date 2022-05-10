@@ -4,13 +4,7 @@ import { makeStyles } from '@mui/styles'
 import Paper from '@mui/material/Paper'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import Typography from '@mui/material/Typography'
-// import { FieldArray } from 'formik'
-
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile'
+import { FilesList } from '../FIlesList/FilesList'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -69,16 +63,7 @@ export const DragAndDrop = ({ name, setFieldValue = f => f }) => {
             </div>
 
             <aside className={styles.fullBlock}>
-                <List sx={{ width: '100%', maxWidth: '100%' }} className={styles.fullBlock}>
-                    {acceptedFiles.map((file, i) => (
-                        <ListItem key={i}>
-                            <ListItemAvatar>
-                                <InsertDriveFileIcon className={styles.iconFile} />
-                            </ListItemAvatar>
-                            <ListItemText primary={file.path} secondary={file.size} />
-                        </ListItem>
-                    ))}
-                </List>
+                <FilesList dataList={acceptedFiles} />
             </aside>
         </>
     )
