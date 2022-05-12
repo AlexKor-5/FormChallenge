@@ -44,7 +44,7 @@ export const App = () => {
                     <Form>
                         <MainContainer>
                             <Routes>
-                                <Route path="/" element={<Step1 />} />
+                                <Route path="/" element={<Step1 context={context} />} />
                                 <Route
                                     path="step2"
                                     element={
