@@ -11,7 +11,9 @@ export const Step3 = ({ context }) => {
         <>
             <Title text={'Step 3'} iconRender={<AccountCircleRoundedIcon />} />
             <DragAndDrop name={'files'} setFieldValue={setFieldValue} />
-            <MyButton linkTo={'/overview'}>Next</MyButton>
+            <MyButton linkTo={'/overview'} context={context}>
+                Next
+            </MyButton>
         </>
     )
 }

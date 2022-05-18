@@ -21,17 +21,19 @@ export const DataTable = ({ tableValues }) => {
                 <TableBody>
                     {Object.keys(tableValues)
                         .filter(item => item !== 'files')
-                        .map((keyName, index, arr) => (
-                            <TableRow
-                                key={keyName}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {keyName}
-                                </TableCell>
-                                <TableCell align="right">{tableValues[keyName]}</TableCell>
-                            </TableRow>
-                        ))}
+                        .map((keyName, index, arr) => {
+                            return tableValues[keyName] ? (
+                                <TableRow
+                                    key={keyName}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {keyName}
+                                    </TableCell>
+                                    <TableCell align="right">{tableValues[keyName]}</TableCell>
+                                </TableRow>
+                            ) : null
+                        })}
                 </TableBody>
             </Table>
         </TableContainer>

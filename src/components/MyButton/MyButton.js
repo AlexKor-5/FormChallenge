@@ -12,37 +12,16 @@ export const MyButton = ({
     ...props
 }) => {
     const navigate = useNavigate()
-    const { validateField, setFieldTouched, setTouched, validateForm, errors } = context
-    console.log(context)
-    console.log('errors == ', errors)
+    const { setTouched, validateForm } = context
 
-    // const [myErrors, setMyErrors] = useState([])
-    //
-    // useEffect(() => {
-    //     return () => {
-    //         // console.log('errors == ', errors)
-    //     }
-    // }, [errors])
-
-    const handleClick = errors => {
+    const handleClick = () => {
         setTouched(touchedFields)
         validateForm()
-        // navigate(linkTo)
-        // console.log(' f errors = ')
-        // console.log(Object.keys(errors))
-        // if (!Object.keys(errors).includes('firstName')) {
-        //     console.log('go to next page!')
-        // }
+        navigate(linkTo)
     }
 
     return (
-        <Button
-            variant="contained"
-            {...props}
-            type={type}
-            onClick={() => handleClick(errors)}
-            fullWidth
-        >
+        <Button variant="contained" {...props} type={type} onClick={() => handleClick()} fullWidth>
             {children}
         </Button>
     )

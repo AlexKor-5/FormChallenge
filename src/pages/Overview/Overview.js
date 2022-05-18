@@ -15,7 +15,9 @@ export const Overview = ({ context }) => {
             <DataTable tableValues={values} />
             <Title text={'Files'} iconRender={<InsertDriveFileIcon />} />
             <FilesList dataList={values.files} />
-            <MyButton type={'submit'}>Submit</MyButton>
+            <MyButton type={'submit'} context={context}>
+                Submit
+            </MyButton>
         </>
     )
 }
