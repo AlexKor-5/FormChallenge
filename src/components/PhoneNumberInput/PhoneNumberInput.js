@@ -22,13 +22,14 @@ const MyField = React.forwardRef(function custom(props, ref) {
 
 export const PhoneNumberInput = ({ text, ...props }) => {
     const [focus, setFocus] = useState(false)
-    const { setFieldValue } = useFormikContext()
+    const { setFieldValue, values } = useFormikContext()
     const { name } = props
     return (
         <>
             <Input
                 {...props}
                 country="UA"
+                value={values.phoneNumber}
                 international={focus}
                 withCountryCallingCode
                 onChange={value => {

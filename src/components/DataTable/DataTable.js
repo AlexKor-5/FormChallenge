@@ -21,7 +21,8 @@ export const DataTable = ({ tableValues }) => {
                 <TableBody>
                     {Object.keys(tableValues)
                         .filter(item => item !== 'files')
-                        .map((keyName, index, arr) => {
+                        .filter(item => item !== 'availablePhoneNumber')
+                        .map(keyName => {
                             return tableValues[keyName] ? (
                                 <TableRow
                                     key={keyName}

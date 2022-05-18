@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import Typography from '@mui/material/Typography'
 import { FilesList } from '../FIlesList/FilesList'
+import { useFormikContext } from 'formik'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles(theme => ({
 
 export const DragAndDrop = ({ name, setFieldValue = f => f }) => {
     const styles = useStyles()
+    const { values } = useFormikContext()
 
     const onDrop = useCallback(
         acceptedFiles => {
@@ -63,7 +65,7 @@ export const DragAndDrop = ({ name, setFieldValue = f => f }) => {
             </div>
 
             <aside className={styles.fullBlock}>
-                <FilesList dataList={acceptedFiles} />
+                <FilesList dataList={values.files} />
             </aside>
         </>
     )

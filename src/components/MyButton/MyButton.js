@@ -13,14 +13,25 @@ export const MyButton = ({
     const navigate = useNavigate()
     const { setTouched, validateForm } = useFormikContext()
 
-    const handleClick = () => {
+    const handleClick = touchedFields => {
         setTouched(touchedFields)
         validateForm()
-        // navigate(linkTo)
+            .then(values =>
+                Object.keys(touchedFields).some(touched => Object.keys(values).includes(touched))
+            )
+            .then(bool => {
+                navigate(bool ? '#' : linkTo)
+            })
     }
 
     return (
-        <Button variant="contained" {...props} type={type} onClick={() => handleClick()} fullWidth>
+        <Button
+            variant="contained"
+            {...props}
+            type={type}
+            onClick={() => handleClick(touchedFields)}
+            fullWidth
+        >
             {children}
         </Button>
     )

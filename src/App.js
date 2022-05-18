@@ -19,6 +19,7 @@ export const App = () => {
                     lastName: '',
                     email: '',
                     phoneNumber: '',
+                    availablePhoneNumber: false,
                     files: [],
                 }}
                 validationSchema={Yup.object({
@@ -28,7 +29,7 @@ export const App = () => {
                     lastName: Yup.string()
                         .max(20, 'Have to be 20 or less characters')
                         .required('Required'),
-                    email: Yup.string().required('Required.'),
+                    email: Yup.string().email('Invalid Email').required('Required.'),
                     phoneNumber: haveNumber
                         ? Yup.string().phone('UA', false, 'Phone number is invalid')
                         : Yup.string(),
