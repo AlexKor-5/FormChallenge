@@ -27,7 +27,6 @@ export const MyButton = ({
     const handleClick = errors => {
         setTouched(touchedFields)
         validateForm()
-        // console.log('errors in function = ', errors)
         // navigate(linkTo)
         // console.log(' f errors = ')
         // console.log(Object.keys(errors))
