@@ -4,18 +4,13 @@ import { TextInput } from '../../components/TextInput/TextInput'
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
 import { MyButton } from '../../components/MyButton/MyButton'
 
-export const Step1 = ({ context }) => {
-    // console.log(context)
+export const Step1 = () => {
     return (
         <>
             <Title text={'Step 1'} iconRender={<AccountCircleRoundedIcon />} />
             <TextInput text={'First Name'} name={'firstName'} />
             <TextInput text={'Last Name'} name={'lastName'} />
-            <MyButton
-                linkTo={'/step2'}
-                touchedFields={{ firstName: true, lastName: true }}
-                context={context}
-            >
+            <MyButton linkTo={'/step2'} touchedFields={{ firstName: true, lastName: true }}>
                 Next
             </MyButton>
         </>

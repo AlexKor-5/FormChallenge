@@ -5,19 +5,17 @@ import { MyButton } from '../../components/MyButton/MyButton'
 import React from 'react'
 import { DataTable } from '../../components/DataTable/DataTable'
 import { FilesList } from '../../components/FIlesList/FilesList'
+import { useFormikContext } from 'formik'
 
-export const Overview = ({ context }) => {
-    const { values } = context
-    // console.log(context)
+export const Overview = () => {
+    const { values } = useFormikContext()
     return (
         <>
             <Title text={'Form Values'} iconRender={<FormatAlignJustifyIcon />} />
             <DataTable tableValues={values} />
             <Title text={'Files'} iconRender={<InsertDriveFileIcon />} />
             <FilesList dataList={values.files} />
-            <MyButton type={'submit'} context={context}>
-                Submit
-            </MyButton>
+            <MyButton type={'submit'}>Submit</MyButton>
         </>
     )
 }

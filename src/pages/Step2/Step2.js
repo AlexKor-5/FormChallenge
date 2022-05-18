@@ -7,9 +7,8 @@ import { MyButton } from '../../components/MyButton/MyButton'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 
-export const Step2 = ({ context, setHaveNumber = f => f }) => {
+export const Step2 = ({ setHaveNumber = f => f }) => {
     const [check, setCheck] = useState(false)
-    // console.log(context)
     return (
         <>
             <Title text={'Step 2'} iconRender={<AccountCircleRoundedIcon />} />
@@ -28,10 +27,8 @@ export const Step2 = ({ context, setHaveNumber = f => f }) => {
                 }
                 label="Do you have a phone number?"
             />
-            {check ? (
-                <PhoneNumberInput name={'phoneNumber'} label={'Phone Number'} context={context} />
-            ) : null}
-            <MyButton linkTo={'/step3'} touchedFields={{ email: true }} context={context}>
+            {check ? <PhoneNumberInput name={'phoneNumber'} label={'Phone Number'} /> : null}
+            <MyButton linkTo={'/step3'} touchedFields={{ email: true }}>
                 Next
             </MyButton>
         </>

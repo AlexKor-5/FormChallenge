@@ -40,23 +40,16 @@ export const App = () => {
                     }, 400)
                 }}
             >
-                {context => (
-                    <Form>
-                        <MainContainer>
-                            <Routes>
-                                <Route path="/" element={<Step1 context={context} />} />
-                                <Route
-                                    path="step2"
-                                    element={
-                                        <Step2 context={context} setHaveNumber={setHaveNumber} />
-                                    }
-                                />
-                                <Route path="step3" element={<Step3 context={context} />} />
-                                <Route path="overview" element={<Overview context={context} />} />
-                            </Routes>
-                        </MainContainer>
-                    </Form>
-                )}
+                <Form>
+                    <MainContainer>
+                        <Routes>
+                            <Route path="/" element={<Step1 />} />
+                            <Route path="step2" element={<Step2 setHaveNumber={setHaveNumber} />} />
+                            <Route path="step3" element={<Step3 />} />
+                            <Route path="overview" element={<Overview />} />
+                        </Routes>
+                    </MainContainer>
+                </Form>
             </Formik>
         </>
     )
