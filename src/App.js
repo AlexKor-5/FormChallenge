@@ -35,13 +35,20 @@ export const App = () => {
                         ? Yup.string().phone('UA', false, 'Phone number is invalid')
                         : Yup.string(),
                 })}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        // alert(JSON.stringify(values, null, 2))
+                onSubmit={async (values, bag) => {
+                    console.log(JSON.stringify(values))
+                    const response = await fetch('/overview', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8',
+                        },
+                        body: JSON.stringify(values),
+                    })
+                    if (response.ok) {
                         Swal.fire('Good job!', '', 'success').then(data => data)
-                        console.log(values)
-                        setSubmitting(false)
-                    }, 400)
+                    } else {
+                        Swal.fire('Something went wrong!', '', 'error').then(data => data)
+                    }
                 }}
             >
                 <Form>

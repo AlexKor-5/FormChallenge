@@ -7,9 +7,9 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 
-export const DataTable = ({ tableValues }) => {
+export const DataTable = ({ tableValues, ...props }) => {
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} {...props}>
             <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>

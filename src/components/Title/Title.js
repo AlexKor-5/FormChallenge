@@ -14,12 +14,18 @@ const useStyles = makeStyles({
     },
 })
 
-export const Title = ({ text, iconRender }) => {
+export const Title = ({ text, iconRender, ...props }) => {
     const classes = useStyles()
     return (
         <div className={classes.flexContainer}>
             {iconRender}
-            <Typography variant="h6" gutterBottom component="div" className={classes.typography}>
+            <Typography
+                variant="h6"
+                gutterBottom
+                component="div"
+                className={classes.typography}
+                {...props}
+            >
                 {text}
             </Typography>
         </div>

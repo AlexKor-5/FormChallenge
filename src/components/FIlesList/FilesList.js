@@ -16,10 +16,10 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export const FilesList = ({ dataList }) => {
+export const FilesList = ({ dataList, ...props }) => {
     const styles = useStyles()
     return (
-        <List sx={{ width: '100%', maxWidth: '100%' }} className={styles.fullBlock}>
+        <List sx={{ width: '100%', maxWidth: '100%' }} className={styles.fullBlock} {...props}>
             {dataList.map((file, i) => (
                 <ListItem key={i}>
                     <ListItemAvatar>

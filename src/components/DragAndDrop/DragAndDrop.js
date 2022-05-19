@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export const DragAndDrop = ({ name, setFieldValue = f => f }) => {
+export const DragAndDrop = ({ name, setFieldValue = f => f, ...props }) => {
     const styles = useStyles()
     const { values } = useFormikContext()
 
@@ -50,7 +50,11 @@ export const DragAndDrop = ({ name, setFieldValue = f => f }) => {
     return (
         <>
             <div className={styles.fullBlock}>
-                <Paper {...getRootProps({ className: 'dropzone' })} className={styles.root}>
+                <Paper
+                    {...getRootProps({ className: 'dropzone' })}
+                    className={styles.root}
+                    {...props}
+                >
                     <input {...getInputProps()} name={name} />
                     <CloudUploadIcon className={styles.icon} />
                     <Typography
