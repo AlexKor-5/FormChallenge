@@ -45,7 +45,7 @@ export const DragAndDrop = ({ name, setFieldValue = f => f }) => {
         },
         [name, setFieldValue]
     )
-    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop })
+    const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
     return (
         <>

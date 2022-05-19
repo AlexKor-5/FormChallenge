@@ -8,6 +8,7 @@ import { Step2 } from './pages/Step2/Step2'
 import { Step3 } from './pages/Step3/Step3'
 import { Overview } from './pages/Overview/Overview'
 import { Routes, Route } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const App = () => {
     const [haveNumber, setHaveNumber] = useState(false)
@@ -36,7 +37,9 @@ export const App = () => {
                 })}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2))
+                        // alert(JSON.stringify(values, null, 2))
+                        Swal.fire('Good job!', '', 'success').then(data => data)
+                        console.log(values)
                         setSubmitting(false)
                     }, 400)
                 }}

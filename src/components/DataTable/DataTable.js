@@ -8,7 +8,6 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 
 export const DataTable = ({ tableValues }) => {
-    console.log(tableValues)
     return (
         <TableContainer component={Paper}>
             <Table aria-label="simple table">
