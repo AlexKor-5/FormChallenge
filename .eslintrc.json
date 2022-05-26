@@ -23,7 +23,6 @@
         "jsx-a11y"
     ],
     "rules": {
-      "no-unused-vars": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/prop-types": 0

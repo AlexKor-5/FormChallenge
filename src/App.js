@@ -25,6 +25,7 @@ export const App = () => {
                 }}
                 validationSchema={Yup.object({
                     firstName: Yup.string()
+                        .min(2, 'Have to be at least two characters')
                         .max(15, 'Have to be 15 characters or less')
                         .required('Required'),
                     lastName: Yup.string()
@@ -35,7 +36,7 @@ export const App = () => {
                         ? Yup.string().phone('UA', false, 'Phone number is invalid')
                         : Yup.string(),
                 })}
-                onSubmit={async (values, bag) => {
+                onSubmit={async values => {
                     console.log(JSON.stringify(values))
                     const response = await fetch('/overview', {
                         method: 'POST',

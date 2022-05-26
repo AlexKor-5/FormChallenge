@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import { FilesList } from '../FIlesList/FilesList'
 import { useFormikContext } from 'formik'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     root: {
         backgroundColor: '#EEE !important',
         textAlign: 'center',
