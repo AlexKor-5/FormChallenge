@@ -27,6 +27,11 @@ Move to the `form` directory.
   cd form
   ```
 ##### Step 4:
+Install all dependencies from package.json.
+  ```properties
+  npm install
+  ```
+##### Step 5:
 Finally, enter this:
   ```properties
   npm start
