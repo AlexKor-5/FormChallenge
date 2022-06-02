@@ -22,9 +22,9 @@ Clone this project into your directory.
   git clone https://github.com/AlexKor-5/FormChallenge.git
   ```
 ##### Step 3:
-Move to the `form` directory.
+Move to the `FormChallenge` directory.
   ```properties
-  cd form
+  cd FormChallenge
   ```
 ##### Step 4:
 Install all dependencies from package.json.

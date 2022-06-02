@@ -20,7 +20,7 @@ const MyField = React.forwardRef(function custom(props, ref) {
     )
 })
 
-export const PhoneNumberInput = ({ text, ...props }) => {
+export const PhoneNumberInput = ({ ...props }) => {
     const [focus, setFocus] = useState(false)
     const { setFieldValue, values } = useFormikContext()
     const { name } = props
