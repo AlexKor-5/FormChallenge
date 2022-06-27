@@ -7,6 +7,7 @@ import { useFormikContext } from 'formik'
 
 const MyField = React.forwardRef(function custom(props, ref) {
     const { name, label } = props
+
     return (
         <Field
             {...props}
