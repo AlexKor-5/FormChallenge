@@ -48,7 +48,9 @@ export const App = () => {
                     if (response.ok) {
                         Swal.fire('Good job!', '', 'success').then(data => data)
                     } else {
-                        Swal.fire('Something went wrong!', '', 'error').then(data => data)
+                        Swal.fire('Something went wrong!', '', 'error').then(
+                            data => data
+                        )
                     }
                 }}
             >
@@ -56,7 +58,10 @@ export const App = () => {
                     <MainContainer>
                         <Routes>
                             <Route path="/" element={<Step1 />} />
-                            <Route path="step2" element={<Step2 setHaveNumber={setHaveNumber} />} />
+                            <Route
+                                path="step2"
+                                element={<Step2 setHaveNumber={setHaveNumber} />}
+                            />
                             <Route path="step3" element={<Step3 />} />
                             <Route path="overview" element={<Overview />} />
                         </Routes>

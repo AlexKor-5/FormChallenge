@@ -17,7 +17,9 @@ export const MyButton = ({
         setTouched(touchedFields)
         validateForm()
             .then(values =>
-                Object.keys(touchedFields).some(touched => Object.keys(values).includes(touched))
+                Object.keys(touchedFields).some(touched =>
+                    Object.keys(values).includes(touched)
+                )
             )
             .then(bool => {
                 navigate(bool ? '#' : linkTo)

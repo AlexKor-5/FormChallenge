@@ -4,17 +4,17 @@ import { App } from './App'
 import { BrowserRouter } from 'react-router-dom'
 import { worker } from './mocks/browser'
 
-/* eslint-disable */
 if (process.env.NODE_ENV === 'development') {
-    worker.start()
+    worker.start({ onUnhandledRequest: 'bypass' }).then()
 }
-/* eslint-enable */
 
 ReactDOM.render(
-    <React.StrictMode>
+    <>
+        {/*<React.StrictMode>*/}
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </React.StrictMode>,
+        {/*</React.StrictMode>*/}
+    </>,
     document.querySelector('#root')
 )

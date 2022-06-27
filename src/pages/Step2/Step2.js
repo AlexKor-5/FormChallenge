@@ -33,7 +33,10 @@ export const Step2 = ({ setHaveNumber = f => f }) => {
             {values.availablePhoneNumber || check ? (
                 <PhoneNumberInput name={'phoneNumber'} label={'Phone Number'} />
             ) : null}
-            <MyButton linkTo={'/step3'} touchedFields={{ email: true, phoneNumber: true }}>
+            <MyButton
+                linkTo={'/step3'}
+                touchedFields={{ email: true, phoneNumber: true }}
+            >
                 Next
             </MyButton>
         </>
