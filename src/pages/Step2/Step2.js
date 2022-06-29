@@ -11,6 +11,7 @@ import { useFormikContext } from 'formik'
 export const Step2 = ({ setHaveNumber = f => f }) => {
     const [check, setCheck] = useState(false)
     const { setFieldValue, values } = useFormikContext()
+
     return (
         <>
             <Title text={'Step 2'} iconRender={<AccountCircleRoundedIcon />} />

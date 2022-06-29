@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { fireEvent } from '@testing-library/react'
 import { App } from './App'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, MemoryRouter, useLocation } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 
@@ -11,13 +11,15 @@ import '@testing-library/jest-dom'
 describe('App', () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
+            <MemoryRouter initialEntries={['/']}>
                 <App />
-            </BrowserRouter>
+            </MemoryRouter>
         )
     })
 
     it('calls submit', async () => {
+        // const location = useLocation()
+
         await waitFor(() =>
             fireEvent.change(getFirstName(), { target: { value: 'Alexander' } })
         )
@@ -27,6 +29,9 @@ describe('App', () => {
             fireEvent.change(getLastName(), { target: { value: 'Kor' } })
         )
         expect(getLastName()).toHaveValue('Kor')
+
+        expect(getButton()).toBeInTheDocument()
+        // console.log(location.pathname)
 
         // const email = await screen.findByRole('textbox', {
         //     name: /email/i,
@@ -49,4 +54,13 @@ const getLastName = () =>
     screen.getByRole('textbox', {
         name: /last name/i,
     })
-const findEmail = () => screen.findByLabelText(/email/i)
+
+const getButton = () =>
+    screen.getByRole('button', {
+        name: /next/i,
+    })
+
+const findEmail = () =>
+    screen.getByRole('textbox', {
+        name: /email/i,
+    })
