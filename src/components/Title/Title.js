@@ -1,6 +1,7 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
 import { makeStyles } from '@mui/styles'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles({
     flexContainer: {
@@ -30,4 +31,8 @@ export const Title = ({ text, iconRender, ...props }) => {
             </Typography>
         </div>
     )
+}
+Title.propTypes = {
+    text: PropTypes.string.isRequired,
+    iconRender: PropTypes.element.isRequired,
 }

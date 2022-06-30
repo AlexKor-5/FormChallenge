@@ -8,6 +8,7 @@ import { Step2 } from './pages/Step2/Step2'
 import { Step3 } from './pages/Step3/Step3'
 import { Overview } from './pages/Overview/Overview'
 import { Routes, Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 export const App = ({ submit }) => {
     const [haveNumber, setHaveNumber] = useState(false)
@@ -51,6 +52,9 @@ export const App = ({ submit }) => {
             </Form>
         </Formik>
     )
+}
+App.propTypes = {
+    submit: PropTypes.func,
 }
 App.defaultProps = {
     submit: (f) => f,

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from '@mui/material'
 import { makeStyles } from '@mui/styles'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles({
     container: {
@@ -20,4 +21,7 @@ export const MainContainer = ({ children }) => {
             {children}
         </Container>
     )
+}
+MainContainer.propTypes = {
+    children: PropTypes.element.isRequired,
 }

@@ -1,9 +1,11 @@
 # FormChallenge
 
 ## Tech stack:
-`HTML` `CSS` `JavaScript` `React` `React Router` `React-Dropzone` `Material-UI` `Formik` `Formik-mui` `Yup` `Mock Service Worker`
+`HTML` `CSS` `JavaScript` `React` `React Router` `React-Dropzone`
+`Material-UI` `Formik` `Formik-mui` `Yup` `Mock Service Worker`
+`React Testing Library`
 #### Code quality:
-`Eslint` `Prettier`
+`Eslint` `Prettier` `Jest`
 
 ---
 ## How to run the project:

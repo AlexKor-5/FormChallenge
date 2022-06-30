@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import PropTypes from 'prop-types'
 
 export const DataTable = ({ tableValues, ...props }) => {
     return (
@@ -19,18 +20,24 @@ export const DataTable = ({ tableValues, ...props }) => {
                 </TableHead>
                 <TableBody>
                     {Object.keys(tableValues)
-                        .filter(item => item !== 'files')
-                        .filter(item => item !== 'availablePhoneNumber')
-                        .map(keyName => {
+                        .filter((item) => item !== 'files')
+                        .filter((item) => item !== 'availablePhoneNumber')
+                        .map((keyName) => {
                             return tableValues[keyName] ? (
                                 <TableRow
                                     key={keyName}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    sx={{
+                                        '&:last-child td, &:last-child th': {
+                                            border: 0,
+                                        },
+                                    }}
                                 >
                                     <TableCell component="th" scope="row">
                                         {keyName}
                                     </TableCell>
-                                    <TableCell align="right">{tableValues[keyName]}</TableCell>
+                                    <TableCell align="right">
+                                        {tableValues[keyName]}
+                                    </TableCell>
                                 </TableRow>
                             ) : null
                         })}
@@ -38,4 +45,7 @@ export const DataTable = ({ tableValues, ...props }) => {
             </Table>
         </TableContainer>
     )
+}
+DataTable.propTypes = {
+    tableValues: PropTypes.object.isRequired,
 }

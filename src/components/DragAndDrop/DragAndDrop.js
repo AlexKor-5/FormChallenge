@@ -6,6 +6,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import Typography from '@mui/material/Typography'
 import { FilesList } from '../FIlesList/FilesList'
 import { useFormikContext } from 'formik'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -35,12 +36,12 @@ const useStyles = makeStyles(() => ({
     },
 }))
 
-export const DragAndDrop = ({ name, setFieldValue = f => f, ...props }) => {
+export const DragAndDrop = ({ name, setFieldValue = (f) => f, ...props }) => {
     const styles = useStyles()
     const { values } = useFormikContext()
 
     const onDrop = useCallback(
-        acceptedFiles => {
+        (acceptedFiles) => {
             setFieldValue(name, acceptedFiles)
         },
         [name, setFieldValue]
@@ -73,4 +74,8 @@ export const DragAndDrop = ({ name, setFieldValue = f => f, ...props }) => {
             </aside>
         </>
     )
+}
+DragAndDrop.propTypes = {
+    name: PropTypes.string.isRequired,
+    setFieldValue: PropTypes.func,
 }

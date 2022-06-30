@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 
-//https://testing-playground.com/ -> helper to find a right role of element in HTML
+//https://testing-playground.com/ -> the helper to find a right role of element in HTML
 const mockSubmit = jest.fn()
 
 describe('App', () => {

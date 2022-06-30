@@ -7,8 +7,9 @@ import { MyButton } from '../../components/MyButton/MyButton'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import { useFormikContext } from 'formik'
+import PropTypes from 'prop-types'
 
-export const Step2 = ({ setHaveNumber = f => f }) => {
+export const Step2 = ({ setHaveNumber = (f) => f }) => {
     const [check, setCheck] = useState(false)
     const { setFieldValue, values } = useFormikContext()
 
@@ -42,4 +43,7 @@ export const Step2 = ({ setHaveNumber = f => f }) => {
             </MyButton>
         </>
     )
+}
+Step2.propTypes = {
+    setHaveNumber: PropTypes.func,
 }

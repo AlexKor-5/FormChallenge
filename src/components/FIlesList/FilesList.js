@@ -5,6 +5,7 @@ import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile'
 import ListItemText from '@mui/material/ListItemText'
 import React from 'react'
 import { makeStyles } from '@mui/styles'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(() => ({
     iconFile: {
@@ -16,10 +17,14 @@ const useStyles = makeStyles(() => ({
     },
 }))
 
-export const FilesList = ({ dataList, ...props }) => {
+export const FilesList = ({ dataList = [], ...props }) => {
     const styles = useStyles()
     return (
-        <List sx={{ width: '100%', maxWidth: '100%' }} className={styles.fullBlock} {...props}>
+        <List
+            sx={{ width: '100%', maxWidth: '100%' }}
+            className={styles.fullBlock}
+            {...props}
+        >
             {dataList.map((file, i) => (
                 <ListItem key={i}>
                     <ListItemAvatar>
@@ -30,4 +35,7 @@ export const FilesList = ({ dataList, ...props }) => {
             ))}
         </List>
     )
+}
+FilesList.propTypes = {
+    dataList: PropTypes.array,
 }
