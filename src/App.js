@@ -8,9 +8,8 @@ import { Step2 } from './pages/Step2/Step2'
 import { Step3 } from './pages/Step3/Step3'
 import { Overview } from './pages/Overview/Overview'
 import { Routes, Route } from 'react-router-dom'
-import Swal from 'sweetalert2'
 
-export const App = () => {
+export const App = ({ submit }) => {
     const [haveNumber, setHaveNumber] = useState(false)
     return (
         <Formik
@@ -35,23 +34,7 @@ export const App = () => {
                     ? Yup.string().phone('UA', false, 'Phone number is invalid')
                     : Yup.string(),
             })}
-            onSubmit={async values => {
-                console.log(JSON.stringify(values))
-                const response = await fetch('/overview', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json;charset=utf-8',
-                    },
-                    body: JSON.stringify(values),
-                })
-                if (response.ok) {
-                    Swal.fire('Good job!', '', 'success').then(data => data)
-                } else {
-                    Swal.fire('Something went wrong!', '', 'error').then(
-                        data => data
-                    )
-                }
-            }}
+            onSubmit={async (values) => submit(values)}
         >
             <Form>
                 <MainContainer>
@@ -68,4 +51,7 @@ export const App = () => {
             </Form>
         </Formik>
     )
+}
+App.defaultProps = {
+    submit: (f) => f,
 }
